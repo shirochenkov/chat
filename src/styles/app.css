@@ -1,0 +1,38 @@
+.app {
+    font-size: 20px;
+}
+
+.app ul {
+    list-style: none;
+    padding-left: 15px;
+}
+
+.node-link {
+    margin: 10px 0;
+    display: inline-block;
+}
+
+.hide {
+    display: none !important;
+}
+
+.togglable {
+    color: #0088cc;
+    cursor: pointer;
+}
+
+.toggle-down::after,
+.toggle-up::after {
+    font-size: 8px;
+    margin-left: 0.5em;
+}
+
+.toggle-down::after {
+    content: "▼";
+    display: inline-block;
+}
+
+.toggle-up::after {
+    content: "▶";
+    display: inline-block;
+}
