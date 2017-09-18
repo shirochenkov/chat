@@ -1,12 +1,22 @@
 const io = require('socket.io')();
 
-io.on('connection', (client) => {
-    client.on('send', (msg) => {
-        console.log(msg);
-        client.emit('msg', { msg });
-        // setInterval(() => {
-        //     client.emit('timer', new Date());
-        // }, interval);
+let logs = [];
+
+function saveLog(message) {
+    logs.push(message);
+}
+
+io.on('connection', (socket) => {
+    socket.on('action', (action) => {
+        if(action.type === 'server/logs') {
+            socket.emit('action', {type: 'GET_ALL_MESSAGES', payload: logs});
+        }
+
+        if(action.type === 'server/send') {
+            saveLog(action.payload);
+            socket.emit('action', {type: 'SEND_MESSAGE', payload: action.payload});
+            socket.broadcast.emit('action', {type: 'SEND_MESSAGE', payload: action.payload});
+        }
     });
 });
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class Login extends Component {
     sendMyName() {
-        this.props.setName(this.textInput.value)
+        this.props.setName(this.textInput.value);
     }
     render() {
         return <div>

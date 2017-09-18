@@ -1,11 +1,20 @@
-import { SEND_MESSAGE } from '../constants/Chat'
+import { SERVER_SEND, SERVER_LOGS } from '../constants/Chat'
 import { SET_NAME } from '../constants/Login'
 
 export function sendMessage(message) {
     return (dispatch) => {
         dispatch({
-            type: SEND_MESSAGE,
+            type: SERVER_SEND,
             payload: message
+        });
+    }
+}
+
+export function setLog(messages) {
+    return (dispatch) => {
+        dispatch({
+            type: SERVER_LOGS,
+            payload: messages
         });
     }
 }

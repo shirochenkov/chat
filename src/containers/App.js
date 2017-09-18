@@ -6,21 +6,10 @@ import User from '../components/User'
 import Chat from '../components/Chat'
 import * as chatActions from '../actions/chatActions'
 
-// import openSocket from 'socket.io-client';
-// const socket = openSocket('http://localhost:8000');
-
-// socket.on('timer', (data) => {
-//     console.log(data);
-// });
-
 class App extends Component {
     componentDidMount() {
-        // const { sendMessage } = this.props.chatActions;
-
-        // sendMessage({
-        //     from: name,
-        //     msg: this.textInput.value
-        // });
+        const { setLog } = this.props.chatActions;
+        setLog();
     }
     render() {
         const { login, messages } = this.props;
