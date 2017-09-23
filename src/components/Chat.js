@@ -1,34 +1,65 @@
 import React, { PropTypes, Component } from 'react'
+import ReactDOM from 'react-dom'
 
 export default class Chat extends Component {
-    sendMyMessage() {
-        let { name } = this.props;
-        this.props.sendMessage({
-            from: name,
-            msg: this.textInput.value
-        });
+    sendMyMessage(e) {
+        e.preventDefault();
 
-        this.textInput.value = '';
+        let text = this.textInput.value;
+        if(text) {
+            let { name } = this.props;
+            this.props.sendMessage({
+                from: name,
+                msg: text
+            });
+
+            this.textInput.value = '';
+        }
+    }
+    scrollToBottom = () => {
+        const node = ReactDOM.findDOMNode(this.messagesEnd);
+        console.log(node);
+        node.scrollIntoView({ behavior: 'smooth' });
+    };
+    componentDidMount() {
+        this.scrollToBottom();
+    }
+    componentDidUpdate() {
+        this.scrollToBottom();
     }
     render() {
-        const { messages } = this.props;
+        const { messages, socketId } = this.props;
 
-        return <div>
-            <div style={{overflowY: 'auto', height: '100px'}}>
-                {
-                    messages.map((msg, index) => {
-                        return <p key={index}>{msg.from}: {msg.msg}</p>
-                    })
-                }
+        return <div className='chat'>
+            <div className='char__wrapper'>
+                <div className='chat__messages'>
+                    {
+
+                        messages.map((msg, index) => {
+                            let messegeType = 'chat__message';
+                            if(msg.socketId === socketId.socketId) {
+                                messegeType += ' chat__message_mine';
+                            }
+                            return <p className={messegeType} key={index}>
+                                <span className='chat__message-content'>
+                                    <div className='chat__message-from'>{msg.from}</div>
+                                    {msg.msg}
+                                </span>
+                            </p>
+                        })
+                    }
+                    <div style={{ clear: "both" }}
+                         ref={(el) => { this.messagesEnd = el; }}>
+                    </div>
+                </div>
             </div>
-
-            <div>
+            <form onSubmit={::this.sendMyMessage} className='chat__send-messages-form'>
                 <input
+                    className='chat__send-messages'
                     type='text'
                     ref={(input) => { this.textInput = input; }}
                 />
-                <button onClick={::this.sendMyMessage}>Отправить</button>
-            </div>
+            </form>
         </div>
     }
 }

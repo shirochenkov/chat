@@ -10,11 +10,10 @@ export function sendMessage(message) {
     }
 }
 
-export function setLog(messages) {
+export function setLog() {
     return (dispatch) => {
         dispatch({
-            type: SERVER_LOGS,
-            payload: messages
+            type: SERVER_LOGS
         });
     }
 }

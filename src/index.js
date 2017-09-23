@@ -3,7 +3,10 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader'
 import App from './containers/App'
+
+import 'normalize.css'
 import './styles/app.css'
+
 import configureStore from './store/configureStore'
 
 const store = configureStore();

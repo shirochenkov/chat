@@ -1,0 +1,91 @@
+.chat {
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+    padding: 0 30px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    background-color: #F8F8F8;
+    color: #555;
+}
+
+.char__wrapper {
+    height: 100%;
+    overflow: hidden;
+}
+
+.chat__messages {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-right: -20px;
+}
+
+.chat__message {
+    position: relative;
+    margin-left: 35px;
+}
+
+.chat__message:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -24px;
+    width: 16px;
+    height: 16px;
+    border-radius: 90%;
+    background: #36D1DC;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    box-shadow: 0 3px 15px 0 rgba(0,0,0,0.1);
+}
+
+.chat__message_mine {
+    text-align: right;
+    margin-right: 55px;
+}
+
+.chat__message_mine:before {
+    left: auto;
+    right: -24px;
+
+    background: #4CB8C4;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3CD3AD, #4CB8C4);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3CD3AD, #4CB8C4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.chat__message-content {
+    display: inline-block;
+    background-color: #fff;
+    padding: 8px 15px;
+    border-radius: 4px;
+    box-shadow: 0 3px 15px 0 rgba(0,0,0,0.1);
+}
+
+.chat__message-from {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+
+
+.chat__send-messages-form {
+    height: 80px;
+    border-top: 2px solid #fff;
+}
+
+.chat__send-messages {
+    width: 100%;
+    flex-basis: 45px;
+    margin: 15px auto 25px auto;
+    padding: 10px 25px;
+    border-radius: 25px;
+    border: 0;
+    outline: none;
+    box-shadow: 0 7px 20px 0 rgba(0,0,0,0.2);
+}
