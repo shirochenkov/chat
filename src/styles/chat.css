@@ -24,7 +24,7 @@
 
 .chat__message {
     position: relative;
-    margin-left: 35px;
+    margin: 15px 20px 15px 35px;
 }
 
 .chat__message:before {

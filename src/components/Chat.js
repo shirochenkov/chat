@@ -18,7 +18,6 @@ export default class Chat extends Component {
     }
     scrollToBottom = () => {
         const node = ReactDOM.findDOMNode(this.messagesEnd);
-        console.log(node);
         node.scrollIntoView({ behavior: 'smooth' });
     };
     componentDidMount() {
@@ -40,12 +39,12 @@ export default class Chat extends Component {
                             if(msg.socketId === socketId.socketId) {
                                 messegeType += ' chat__message_mine';
                             }
-                            return <p className={messegeType} key={index}>
+                            return <div className={messegeType} key={index}>
                                 <span className='chat__message-content'>
                                     <div className='chat__message-from'>{msg.from}</div>
                                     {msg.msg}
                                 </span>
-                            </p>
+                            </div>
                         })
                     }
                     <div style={{ clear: "both" }}
